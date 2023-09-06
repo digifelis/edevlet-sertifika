@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
+*/
 require __DIR__.'/auth.php';
 
 
@@ -29,8 +29,29 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::middleware(['auth','superadmin'])->group(function () {
-    Route::get('/superadmin', [App\Http\Controllers\SuperadminController::class, 'index'])->name('superadmin.dashboard');
+Route::middleware(['auth','superadmin'])->prefix('superadmin')->group(function () {
+    Route::get('/', [App\Http\Controllers\SuperadminController::class, 'index'])->name('superadmin.dashboard');
+    /* user */
+    Route::get('/users', [App\Http\Controllers\Superadmin\UsersController::class, 'index'])->name('superadmin.users.index');
+    Route::get('/users/add', [App\Http\Controllers\Superadmin\UsersController::class, 'add'])->name('superadmin.users.add');
+    Route::get('/users/delete/{id}', [App\Http\Controllers\Superadmin\UsersController::class, 'delete'])->name('superadmin.users.delete');
+    Route::get('/users/edit/{id}', [App\Http\Controllers\Superadmin\UsersController::class, 'edit'])->name('superadmin.users.edit');
+
+    Route::post('/users/edit/{id}', [App\Http\Controllers\Superadmin\UsersController::class, 'update'])->name('superadmin.users.update');
+    Route::post('/users/add', [App\Http\Controllers\Superadmin\UsersController::class, 'store'])->name('superadmin.users.store');
+
+    /* kurum */
+    Route::get('/kurumlar', [App\Http\Controllers\Superadmin\KurumlarController::class, 'index'])->name('superadmin.kurumlar.index');
+    Route::get('/kurumlar/add', [App\Http\Controllers\Superadmin\KurumlarController::class, 'create'])->name('superadmin.kurumlar.create');
+    Route::get('/kurumlar/delete/{id}', [App\Http\Controllers\Superadmin\KurumlarController::class, 'destroy'])->name('superadmin.kurumlar.destroy');
+    Route::get('/kurumlar/edit/{id}', [App\Http\Controllers\Superadmin\KurumlarController::class, 'edit'])->name('superadmin.kurumlar.edit');
+
+    Route::post('/kurumlar/edit/{id}', [App\Http\Controllers\Superadmin\KurumlarController::class, 'update'])->name('superadmin.kurumlar.update');
+    Route::post('/kurumlar/add', [App\Http\Controllers\Superadmin\KurumlarController::class, 'store'])->name('superadmin.kurumlar.store');
+
+
+
+
 });
 
 Route::middleware(['auth','admin'])->group(function () {

@@ -10,7 +10,6 @@ class SuperadminController extends Controller
 
     public function index()
     {
-        dd(Auth::user()->userType);
-        return view('superadmin');
+        return view('superadmin.superadmin');
     }
 }
