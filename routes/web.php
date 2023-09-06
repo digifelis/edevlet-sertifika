@@ -49,6 +49,16 @@ Route::middleware(['auth','superadmin'])->prefix('superadmin')->group(function (
     Route::post('/kurumlar/edit/{id}', [App\Http\Controllers\Superadmin\KurumlarController::class, 'update'])->name('superadmin.kurumlar.update');
     Route::post('/kurumlar/add', [App\Http\Controllers\Superadmin\KurumlarController::class, 'store'])->name('superadmin.kurumlar.store');
 
+    /* kurs */
+    Route::get('/kurslar', [App\Http\Controllers\Superadmin\KurslarController::class, 'index'])->name('superadmin.kurslar.index');
+    Route::get('/kurslar/add', [App\Http\Controllers\Superadmin\KurslarController::class, 'create'])->name('superadmin.kurslar.create');
+    Route::get('/kurslar/delete/{id}', [App\Http\Controllers\Superadmin\KurslarController::class, 'destroy'])->name('superadmin.kurslar.destroy');
+    Route::get('/kurslar/edit/{id}', [App\Http\Controllers\Superadmin\KurslarController::class, 'edit'])->name('superadmin.kurslar.edit');
+
+    Route::post('/kurslar/edit/{id}', [App\Http\Controllers\Superadmin\KurslarController::class, 'update'])->name('superadmin.kurslar.update');
+    Route::post('/kurslar/add', [App\Http\Controllers\Superadmin\KurslarController::class, 'store'])->name('superadmin.kurslar.store');
+    
+
 
 
 
