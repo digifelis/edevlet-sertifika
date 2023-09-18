@@ -259,9 +259,56 @@
 
 
 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Kurs Yönetimi
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('superadmin.kurslar.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurs Listesi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('superadmin.kurslar.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurs Ekle</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
 
 
-
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Öğrenci Yönetimi
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('superadmin.ogrenciler.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Öğrenci Listesi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('superadmin.ogrenciler.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Öğrenci Ekle</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
 
 
 

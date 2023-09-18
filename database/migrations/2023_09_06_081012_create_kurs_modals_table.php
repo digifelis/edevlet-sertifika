@@ -13,15 +13,26 @@ class CreateKursModalsTable extends Migration
      */
     public function up()
     {
+        /*
+        id	kursAdi	sertifikaAdi	baslik	dilKey	tur	aciklama	sablonDosyasi	
+        baslangicTarihi	bitisTarihi	kursKurumId	created_at	updated_at	
+
+        */
         Schema::create('kurs_modals', function (Blueprint $table) {
             $table->id();
             $table->string('kursAdi');
-            $table->text('aciklama');
+            $table->string('sertifikaAdi');
+            $table->string('baslik');
+            $table->string('dilKey');
+            $table->string('tur');
+            $table->date('sertifikaGecerlilikTarihi');
+            $table->text('aciklama')->nullable();
+            $table->string('sablonDosyasi')->nullable();
             $table->date('baslangicTarihi');
             $table->date('bitisTarihi');
-            
-            $table->integer('kursKurumId');
+            $table->unsignedBigInteger('kursKurumId');
             $table->timestamps();
+            $table->foreign("kursKurumId")->references("id")->on("kurum_modals")->onDelete("cascade");
         });
     }
 

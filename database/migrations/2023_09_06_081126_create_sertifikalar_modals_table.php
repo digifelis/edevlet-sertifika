@@ -15,6 +15,9 @@ class CreateSertifikalarModalsTable extends Migration
     {
         Schema::create('sertifikalar_modals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('ogrenciId');
+            $table->unsignedBigInteger('kursId');
+            $table->unsignedBigInteger('kurumId');
             $table->timestamps();
         });
     }

@@ -21,9 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string("userType")->default("user");
             $table->string("userStatus")->default("active");
-            $table->string("userInstitution")->default("none");
+            $table->unsignedBigInteger("userInstitution")->default("0");
             $table->rememberToken();
             $table->timestamps();
+
+          //  $table->foreign("userInstitution")->references("id")->on("kurum_modals")->onDelete("cascade");
         });
     }
 

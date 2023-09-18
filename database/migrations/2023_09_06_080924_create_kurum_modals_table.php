@@ -16,6 +16,9 @@ class CreateKurumModalsTable extends Migration
         Schema::create('kurum_modals', function (Blueprint $table) {
             $table->id();
             $table->string('kurumAdi');
+            $table->string("kurumKodu");
+            $table->string("kullaniciAdi");
+            $table->string("sifre");
             $table->timestamps();
         });
     }

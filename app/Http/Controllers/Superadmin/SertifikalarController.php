@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Superadmin;
+namespace App\Http\Controllers\superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\superadmin\OgrencilerModal;
 use App\Models\superadmin\KurumModal;
-class KurumlarController extends Controller
+use App\Models\superadmin\KursModal;
+use App\Models\superadmin\SertifikalarModal;
+
+class SertifikalarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +19,11 @@ class KurumlarController extends Controller
     public function index()
     {
         //
-        $kurumlar = KurumModal::all();
-        return view('superadmin.kurumlar.index', ['kurumlar' => $kurumlar]);
+        $ogrenciler = OgrencilerModal::select('ogrenciler.*')
+        ->join('kurumlar', 'ogrenciler.kurumId', '=', 'kurumlar.id')
+        ->join('kurslar', 'kurumlar.id', '=', 'kurslar.kurumId')
+        ->get();
+
     }
 
     /**
@@ -27,7 +34,6 @@ class KurumlarController extends Controller
     public function create()
     {
         //
-        return view('superadmin.kurumlar.add');
     }
 
     /**
@@ -39,13 +45,6 @@ class KurumlarController extends Controller
     public function store(Request $request)
     {
         //
-        $kurum = new KurumModal();
-        $kurum->kurumAdi = $request->kurumAdi;
-        $kurum->kurumKodu = $request->kurumKodu;
-        $kurum->kullaniciAdi = $request->kullaniciAdi;
-        $kurum->sifre = $request->sifre;
-        $kurum->save();
-        return redirect()->route('superadmin.kurumlar.index');
     }
 
     /**
@@ -57,8 +56,6 @@ class KurumlarController extends Controller
     public function show($id)
     {
         //
-        $kurum = KurumModal::find($id);
-        return view('superadmin.kurumlar.show', ['kurum' => $kurum]);
     }
 
     /**
@@ -70,8 +67,6 @@ class KurumlarController extends Controller
     public function edit($id)
     {
         //
-        $kurum = KurumModal::find($id);
-        return view('superadmin.kurumlar.edit', ['kurum' => $kurum]);
     }
 
     /**
@@ -84,13 +79,6 @@ class KurumlarController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kurum = KurumModal::find($id);
-        $kurum->kurumAdi = $request->kurumAdi;
-        $kurum->kurumKodu = $request->kurumKodu;
-        $kurum->kullaniciAdi = $request->kullaniciAdi;
-        $kurum->sifre = $request->sifre;
-        $kurum->save();
-        return redirect()->route('superadmin.kurumlar.index');
     }
 
     /**
@@ -102,8 +90,5 @@ class KurumlarController extends Controller
     public function destroy($id)
     {
         //
-        $user = KurumModal::find($id);
-        $user->delete();
-        return redirect()->route('superadmin.kurumlar.index');
     }
 }

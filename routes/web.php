@@ -57,10 +57,15 @@ Route::middleware(['auth','superadmin'])->prefix('superadmin')->group(function (
 
     Route::post('/kurslar/edit/{id}', [App\Http\Controllers\Superadmin\KurslarController::class, 'update'])->name('superadmin.kurslar.update');
     Route::post('/kurslar/add', [App\Http\Controllers\Superadmin\KurslarController::class, 'store'])->name('superadmin.kurslar.store');
-    
 
+    /* ogrenciler */
+    Route::get('/ogrenciler', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'index'])->name('superadmin.ogrenciler.index');
+    Route::get('/ogrenciler/add', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'create'])->name('superadmin.ogrenciler.create');
+    Route::get('/ogrenciler/delete/{id}', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'destroy'])->name('superadmin.ogrenciler.destroy');
+    Route::get('/ogrenciler/edit/{id}', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'edit'])->name('superadmin.ogrenciler.edit');
 
-
+    Route::post('/ogrenciler/edit/{id}', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'update'])->name('superadmin.ogrenciler.update');
+    Route::post('/ogrenciler/add', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'store'])->name('superadmin.ogrenciler.store');
 
 });
 

@@ -15,7 +15,12 @@ class CreateOgrencilerModalsTable extends Migration
     {
         Schema::create('ogrenciler_modals', function (Blueprint $table) {
             $table->id();
+            $table->string('ogrenciAdi');
+            $table->string('ogrenciSoyadi');
+            $table->string('tcKimlikNo');
+            $table->unsignedBigInteger('kurumId');
             $table->timestamps();
+            $table->foreign("kurumId")->references("id")->on("kurum_modals")->onDelete("cascade");
         });
     }
 
