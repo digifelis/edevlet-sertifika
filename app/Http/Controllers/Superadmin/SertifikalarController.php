@@ -19,9 +19,9 @@ class SertifikalarController extends Controller
     public function index()
     {
         //
-        $ogrenciler = OgrencilerModal::select('ogrenciler.*')
-        ->join('kurumlar', 'ogrenciler.kurumId', '=', 'kurumlar.id')
-        ->join('kurslar', 'kurumlar.id', '=', 'kurslar.kurumId')
+        $ogrenciler = SertifikalarModal::select('ogrenciler_modals.*')
+        ->join('kurum_modals', 'ogrenciler_modals.kurumId', '=', 'kurum_modals.id')
+        ->join('kurs_modals', 'kurs_modals.id', '=', 'kurslar.kurumId')
         ->get();
 
     }
