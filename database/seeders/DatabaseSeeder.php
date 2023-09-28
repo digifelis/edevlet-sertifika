@@ -41,5 +41,13 @@ class DatabaseSeeder extends Seeder
             'userType' => 'user',
             'userStatus' => 'active'
         ]);
+
+
+
+
+
+
+
+
     }
 }

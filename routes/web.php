@@ -77,12 +77,40 @@ Route::middleware(['auth','superadmin'])->prefix('superadmin')->group(function (
     Route::post('/sertifikalar/add', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'store'])->name('superadmin.sertifikalar.store');
 
     /* sinavlar */
-    
+
 
 });
 
-Route::middleware(['auth','admin'])->group(function () {
-    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+
+    /* kurs */
+    Route::get('/kurslar', [App\Http\Controllers\Admin\KurslarController::class, 'index'])->name('admin.kurslar.index');
+    Route::get('/kurslar/add', [App\Http\Controllers\Admin\KurslarController::class, 'create'])->name('admin.kurslar.create');
+    Route::get('/kurslar/delete/{id}', [App\Http\Controllers\Admin\KurslarController::class, 'destroy'])->name('admin.kurslar.destroy');
+    Route::get('/kurslar/edit/{id}', [App\Http\Controllers\Admin\KurslarController::class, 'edit'])->name('admin.kurslar.edit');
+
+    Route::post('/kurslar/add', [App\Http\Controllers\Admin\KurslarController::class, 'store'])->name('admin.kurslar.store');
+    Route::post('/kurslar/edit/{id}', [App\Http\Controllers\Admin\KurslarController::class, 'update'])->name('admin.kurslar.update');
+
+    /* ogrenciler */
+    Route::get('/ogrenciler', [App\Http\Controllers\Admin\OgrencilerController::class, 'index'])->name('admin.ogrenciler.index');
+    Route::get('/ogrenciler/add', [App\Http\Controllers\Admin\OgrencilerController::class, 'create'])->name('admin.ogrenciler.create');
+    Route::get('/ogrenciler/delete/{id}', [App\Http\Controllers\Admin\OgrencilerController::class, 'destroy'])->name('admin.ogrenciler.destroy');
+    Route::get('/ogrenciler/edit/{id}', [App\Http\Controllers\Admin\OgrencilerController::class, 'edit'])->name('admin.ogrenciler.edit');
+
+    Route::post('/ogrenciler/add', [App\Http\Controllers\Admin\OgrencilerController::class, 'store'])->name('admin.ogrenciler.store');
+    Route::post('/ogrenciler/edit/{id}', [App\Http\Controllers\Admin\OgrencilerController::class, 'update'])->name('admin.ogrenciler.update');
+
+    /* sertifikalar */
+    Route::get('/sertifikalar', [App\Http\Controllers\Admin\SertifikalarController::class, 'index'])->name('admin.sertifikalar.index');
+    Route::get('/sertifikalar/add', [App\Http\Controllers\Admin\SertifikalarController::class, 'create'])->name('admin.sertifikalar.create');
+    Route::get('/sertifikalar/delete/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'destroy'])->name('admin.sertifikalar.destroy');
+    Route::get('/sertifikalar/edit/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'edit'])->name('admin.sertifikalar.edit');
+
+    Route::post('/sertifikalar/add', [App\Http\Controllers\Admin\SertifikalarController::class, 'store'])->name('admin.sertifikalar.store');
+    Route::post('/sertifikalar/edit/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'update'])->name('admin.sertifikalar.update');
+    
 });
 
 Route::middleware(['auth','user'])->group(function () {

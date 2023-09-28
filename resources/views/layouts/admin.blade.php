@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Super Admin Dashboard</title>
+  <title>Admin Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -203,58 +203,6 @@
 
 
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Kullanıcı Yönetimi
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('superadmin.users.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kullanıcı Listesi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('superadmin.users.add')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kullanıcı Ekle</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-
-
-
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Kurum Yönetimi
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('superadmin.kurumlar.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kurum Listesi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('superadmin.kurumlar.create')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kurum Ekle</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
 
 
 
@@ -269,13 +217,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('superadmin.kurslar.index')}}" class="nav-link">
+                <a href="{{route('admin.kurslar.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kurs Listesi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('superadmin.kurslar.create')}}" class="nav-link">
+                <a href="{{route('admin.kurslar.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kurs Ekle</p>
                 </a>
@@ -295,13 +243,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('superadmin.ogrenciler.index')}}" class="nav-link">
+                <a href="{{route('admin.ogrenciler.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Öğrenci Listesi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('superadmin.ogrenciler.create')}}" class="nav-link">
+                <a href="{{route('admin.ogrenciler.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Öğrenci Ekle</p>
                 </a>
@@ -322,13 +270,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('superadmin.sertifikalar.index')}}" class="nav-link">
+                <a href="{{route('admin.sertifikalar.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sertifika Listesi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('superadmin.sertifikalar.create')}}" class="nav-link">
+                <a href="{{route('admin.sertifikalar.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sertifika Ekle</p>
                 </a>
@@ -337,9 +285,7 @@
             </ul>
           </li>
 
-
-        <x-Logout></x-Logout>
-
+          <x-Logout></x-Logout>
 
 
 

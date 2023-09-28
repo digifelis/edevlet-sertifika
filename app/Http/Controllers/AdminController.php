@@ -13,6 +13,6 @@ class AdminController extends Controller
      * @return void
      */
     public function index(){
-        return view('admin');
+        return view('admin.admin');
     }
 }
