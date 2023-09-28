@@ -346,7 +346,7 @@
 
 
 
-
+          <!--
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -846,6 +846,9 @@
               <p>Informational</p>
             </a>
           </li>
+          -->
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
