@@ -67,6 +67,18 @@ Route::middleware(['auth','superadmin'])->prefix('superadmin')->group(function (
     Route::post('/ogrenciler/edit/{id}', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'update'])->name('superadmin.ogrenciler.update');
     Route::post('/ogrenciler/add', [App\Http\Controllers\Superadmin\OgrencilerController::class, 'store'])->name('superadmin.ogrenciler.store');
 
+    /* sertifikalar */
+    Route::get('/sertifikalar', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'index'])->name('superadmin.sertifikalar.index');
+    Route::get('/sertifikalar/add', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'create'])->name('superadmin.sertifikalar.create');
+    Route::get('/sertifikalar/delete/{id}', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'destroy'])->name('superadmin.sertifikalar.destroy');
+    Route::get('/sertifikalar/edit/{id}', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'edit'])->name('superadmin.sertifikalar.edit');
+
+    Route::post('/sertifikalar/edit/{id}', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'update'])->name('superadmin.sertifikalar.update');
+    Route::post('/sertifikalar/add', [App\Http\Controllers\Superadmin\SertifikalarController::class, 'store'])->name('superadmin.sertifikalar.store');
+
+    /* sinavlar */
+    
+
 });
 
 Route::middleware(['auth','admin'])->group(function () {

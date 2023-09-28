@@ -312,7 +312,30 @@
 
 
 
-
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Sertifika Yönetimi
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('superadmin.sertifikalar.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sertifika Listesi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('superadmin.sertifikalar.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sertifika Ekle</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
 
 
 
