@@ -54,8 +54,8 @@
                     <td>{{$ogrenci->ogrenciSoyadi}}</td>
                     <td>{{$ogrenci->tcKimlikNo}}</td>
                     <td>
-                        <a href="{{route('superadmin.ogrenciler.destroy', ['id'=>$ogrenci->id])}}">Sil</a>
-                        <a href="{{route('superadmin.ogrenciler.edit', ['id'=>$ogrenci->id])}}">Düzenle</a>
+                        <a href="{{route('superadmin.ogrenciler.destroy', ['id'=>$ogrenci->id])}}" class="btn btn-danger">Sil</a>
+                        <a href="{{route('superadmin.ogrenciler.edit', ['id'=>$ogrenci->id])}}" class="btn btn-primary">Düzenle</a>
                     </td>
                   </tr>
                   @endforeach

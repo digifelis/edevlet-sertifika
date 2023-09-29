@@ -59,8 +59,8 @@
                     <td> {{$kurs->tur}}</td>
                     <td>{{$kurs->sertifikaGecerlilikTarihi}}</td>
                     <td>
-                        <a href="{{route('superadmin.kurslar.destroy', ['id'=>$kurs->id])}}">Sil</a>
-                        <a href="{{route('superadmin.kurslar.edit', ['id'=>$kurs->id])}}">Düzenle</a>
+                        <a href="{{route('superadmin.kurslar.destroy', ['id'=>$kurs->id])}}" class="btn btn-danger">Sil</a>
+                        <a href="{{route('superadmin.kurslar.edit', ['id'=>$kurs->id])}}" class="btn btn-primary">Düzenle</a>
                     </td>
                   </tr>
                   @endforeach

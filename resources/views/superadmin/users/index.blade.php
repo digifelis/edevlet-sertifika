@@ -56,8 +56,8 @@
                     <td> {{$user->userStatus}}</td>
                     <td>{{$user->userInstitution}}</td>
                     <td>
-                        <a href="{{route('superadmin.users.delete', ['id'=>$user->id])}}">Sil</a>
-                        <a href="{{route('superadmin.users.edit', ['id'=>$user->id])}}">Düzenle</a>
+                        <a href="{{route('superadmin.users.delete', ['id'=>$user->id])}}" class="btn btn-danger">Sil</a>
+                        <a href="{{route('superadmin.users.edit', ['id'=>$user->id])}}" class="btn btn-primary">Düzenle</a>
                     </td>
                   </tr>
                   @endforeach

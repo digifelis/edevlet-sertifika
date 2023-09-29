@@ -40,7 +40,7 @@ class SertifikalarController extends Controller
         //
         $kurslar = KursModal::where('kursKurumId', Auth::user()->userInstitution)->get();
         $ogrenciler = OgrencilerModal::where('kurumId', Auth::user()->userInstitution)->get();
-        return view('admin.sertifikalar.add', ['kurslar' => $kurslar, 'ogrenciler' => $ogrenciler]);
+        return view('admin.sertifikalar.add', ['kurslar' => $kurslar, 'ogrenciler' => $ogrenciler, 'action' => Null]);
     }
     
     /**

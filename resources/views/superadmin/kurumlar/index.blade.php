@@ -49,8 +49,8 @@
                     <td>{{$kurum->id}}</td>
                     <td>{{$kurum->kurumAdi}}</td>
                     <td>
-                        <a href="{{route('superadmin.kurumlar.destroy', ['id'=>$kurum->id])}}">Sil</a>
-                        <a href="{{route('superadmin.kurumlar.edit', ['id'=>$kurum->id])}}">Düzenle</a>
+                        <a href="{{route('superadmin.kurumlar.destroy', ['id'=>$kurum->id])}}" class="btn btn-danger">Sil</a>
+                        <a href="{{route('superadmin.kurumlar.edit', ['id'=>$kurum->id])}}" class="btn btn-primary">Düzenle</a>
                     </td>
                   </tr>
                   @endforeach

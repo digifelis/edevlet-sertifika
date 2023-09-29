@@ -58,8 +58,9 @@
                     <td>{{$sertifika->kursAdi}}</td>
                     <td> {{$sertifika->kurumAdi}}</td>
                     <td>
-                        <a href="{{route('admin.sertifikalar.destroy', ['id'=>$sertifika->id])}}">Sil</a>
-                        <a href="{{route('admin.sertifikalar.edit', ['id'=>$sertifika->id])}}">Düzenle</a>
+                        <a href="{{route('admin.sertifikalar.destroy', ['id'=>$sertifika->id])}}" class="btn btn-danger">Sil</a>
+                        <a href="{{route('admin.sertifikalar.edit', ['id'=>$sertifika->id])}}" class="btn btn-primary">Düzenle</a>
+                        
                         
                     </td>
                   </tr>

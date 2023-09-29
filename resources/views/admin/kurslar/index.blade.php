@@ -59,10 +59,10 @@
                     <td> {{$kurs->tur}}</td>
                     <td>{{$kurs->sertifikaGecerlilikTarihi}}</td>
                     <td>
-                        <a href="{{route('admin.kurslar.destroy', ['id'=>$kurs->id])}}">Sil</a>
-                        <a href="{{route('admin.kurslar.edit', ['id'=>$kurs->id])}}">Düzenle</a>
-                        <a href="{{route('admin.sertifikalar.ogrenci.ekle', ['id'=>$kurs->id])}}">Kursa Sertifika Ekle</a>
-                        <a href="{{route('admin.sertifikalar.ogrenci.liste', ['id'=>$kurs->id])}}">Kursa Sertifika Listesi</a>
+                        <a href="{{route('admin.kurslar.destroy', ['id'=>$kurs->id])}}" class="btn btn-danger">Sil</a>
+                        <a href="{{route('admin.kurslar.edit', ['id'=>$kurs->id])}}" class="btn btn-primary">Düzenle</a>
+                        <a href="{{route('admin.sertifikalar.ogrenci.ekle', ['id'=>$kurs->id])}}" class="btn btn-info">Kursa Sertifika Ekle</a>
+                        <a href="{{route('admin.sertifikalar.ogrenci.liste', ['id'=>$kurs->id])}}" class="btn btn-warning">Kursa Sertifika Listesi</a>
                     </td>
                   </tr>
                   @endforeach
