@@ -61,6 +61,8 @@
                     <td>
                         <a href="{{route('admin.kurslar.destroy', ['id'=>$kurs->id])}}">Sil</a>
                         <a href="{{route('admin.kurslar.edit', ['id'=>$kurs->id])}}">Düzenle</a>
+                        <a href="{{route('admin.sertifikalar.ogrenci.ekle', ['id'=>$kurs->id])}}">Kursa Sertifika Ekle</a>
+                        <a href="{{route('admin.sertifikalar.ogrenci.liste', ['id'=>$kurs->id])}}">Kursa Sertifika Listesi</a>
                     </td>
                   </tr>
                   @endforeach

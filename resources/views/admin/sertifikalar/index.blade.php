@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.admin')
 
 @section('content')
   <!-- DataTables -->
@@ -58,8 +58,9 @@
                     <td>{{$sertifika->kursAdi}}</td>
                     <td> {{$sertifika->kurumAdi}}</td>
                     <td>
-                        <a href="{{route('superadmin.sertifikalar.destroy', ['id'=>$sertifika->id])}}">Sil</a>
-                        <a href="{{route('superadmin.sertifikalar.edit', ['id'=>$sertifika->id])}}">Düzenle</a>
+                        <a href="{{route('admin.sertifikalar.destroy', ['id'=>$sertifika->id])}}">Sil</a>
+                        <a href="{{route('admin.sertifikalar.edit', ['id'=>$sertifika->id])}}">Düzenle</a>
+                        
                     </td>
                   </tr>
                   @endforeach

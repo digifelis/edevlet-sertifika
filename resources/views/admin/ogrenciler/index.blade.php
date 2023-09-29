@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.admin')
 
 @section('content')
   <!-- DataTables -->
@@ -54,8 +54,8 @@
                     <td>{{$ogrenci->ogrenciSoyadi}}</td>
                     <td>{{$ogrenci->tcKimlikNo}}</td>
                     <td>
-                        <a href="{{route('superadmin.ogrenciler.destroy', ['id'=>$ogrenci->id])}}">Sil</a>
-                        <a href="{{route('superadmin.ogrenciler.edit', ['id'=>$ogrenci->id])}}">Düzenle</a>
+                        <a href="{{route('admin.ogrenciler.destroy', ['id'=>$ogrenci->id])}}">Sil</a>
+                        <a href="{{route('admin.ogrenciler.edit', ['id'=>$ogrenci->id])}}">Düzenle</a>
                     </td>
                   </tr>
                   @endforeach

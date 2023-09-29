@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Superadmin\KursModal;
-use App\Models\Superadmin\KurumModal;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +20,8 @@ class KurslarController extends Controller
     {
         //
         $kurslar = KursModal::orderBy('id', 'desc')->where('kursKurumId', Auth::user()->userInstitution)->get();
-        $kurumlar = KurumModal::all();
-        return view('admin.kurslar.index', ['kurslar' => $kurslar, 'kurumlar' => $kurumlar]);
+       
+        return view('admin.kurslar.index', ['kurslar' => $kurslar]);
     }
 
     /**
@@ -33,8 +32,7 @@ class KurslarController extends Controller
     public function create()
     {
         //
-        $kurumlar = KurumModal::all();
-        return view('admin.kurslar.add', ['kurumlar' => $kurumlar]);
+        return view('admin.kurslar.add');
     }
 
     /**
@@ -104,7 +102,7 @@ class KurslarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
 
@@ -126,7 +124,7 @@ class KurslarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         //
         $kurs = KursModal::where('id',  $id)->where('kursKurumId',  Auth::user()->userInstitution)->first();
@@ -179,7 +177,7 @@ class KurslarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         //
         try{

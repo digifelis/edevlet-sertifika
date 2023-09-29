@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.admin')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -27,7 +27,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{route('superadmin.sertifikalar.store')}}" method="post">
+              <form class="form-horizontal" action="{{route('admin.sertifikalar.store')}}" method="post">
                 @csrf
                 <div class="card-body">
 
@@ -50,7 +50,9 @@
                       <div class="form-group">
                         <label>Kurs Adı</label>
                         <select class="custom-select rounded-0" id="exampleSelectRounded0" name="kursBilgisi">
-                            <option value="none">seçiniz</option>
+                            @if($action == Null)
+                              <option value="none">seçiniz {{$action}}</option>
+                            @endif
                             @foreach ($kurslar as $kurs)
                             <option value="{{$kurs->id}}" >{{$kurs->kursAdi}}</option>
                             @endforeach
@@ -59,15 +61,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                  <label for="exampleSelectRounded0">Kurum Adı</label>
-                  <select class="custom-select rounded-0" id="exampleSelectRounded0" name="kurumbilgisi">
-                    <option value="none">seçiniz</option>
-                    @foreach ($kurumlar as $kurum)
-                    <option value="{{$kurum->id}}" >{{$kurum->kurumAdi}}</option>
-                    @endforeach
-                  </select>
-                </div>
+
 
 
 

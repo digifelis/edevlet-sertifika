@@ -110,6 +110,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
 
     Route::post('/sertifikalar/add', [App\Http\Controllers\Admin\SertifikalarController::class, 'store'])->name('admin.sertifikalar.store');
     Route::post('/sertifikalar/edit/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'update'])->name('admin.sertifikalar.update');
+
+    Route::get('/sertifikalar/ogrenci/ekle/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'ogrenciEkle'])->name('admin.sertifikalar.ogrenci.ekle');
+    Route::get('/sertifikalar/ogrenci/liste/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'ogrenciListe'])->name('admin.sertifikalar.ogrenci.liste');
     
 });
 
