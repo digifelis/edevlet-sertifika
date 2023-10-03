@@ -28,7 +28,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::middleware(['auth','superadmin'])->prefix('superadmin')->group(function () {
     Route::get('/', [App\Http\Controllers\SuperadminController::class, 'index'])->name('superadmin.dashboard');
     /* user */
