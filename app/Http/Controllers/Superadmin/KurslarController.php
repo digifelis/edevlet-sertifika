@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Superadmin\KursModal;
-use App\Models\Superadmin\KurumModal;
+use App\Models\superadmin\KursModal;
+use App\Models\superadmin\KurumModal;
 use Illuminate\Support\Str;
 
 class KurslarController extends Controller

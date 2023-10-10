@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Superadmin\OgrencilerModal;
-use App\Models\Superadmin\KurumModal;
+use App\Models\superadmin\OgrencilerModal;
+use App\Models\superadmin\KurumModal;
 
 class OgrencilerController extends Controller
 {
