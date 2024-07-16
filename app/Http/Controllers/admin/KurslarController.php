@@ -13,7 +13,7 @@ class KurslarController extends Controller
 {
    /**
      * Display a listing of the resource.
-     *
+     * mansur 2
      * @return \Illuminate\Http\Response
      */
     public function index()

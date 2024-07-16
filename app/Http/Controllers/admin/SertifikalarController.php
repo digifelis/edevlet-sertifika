@@ -20,7 +20,7 @@ class SertifikalarController extends Controller
 {    
     /**
      * convertToPDF
-     * mansur1
+     * mansur2
      * @param  mixed $filePath
      * @param  mixed $outputPath
      * @return void
