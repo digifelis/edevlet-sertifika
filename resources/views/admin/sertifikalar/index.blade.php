@@ -16,7 +16,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
               <li class="breadcrumb-item active">Sertifika Listesi</li>
             </ol>
           </div>
@@ -38,10 +38,11 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="sertifika_table" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>Sertifika Id</th>
+                    <th>Sertifika No</th>
                     <th>Öğrenci Adı</th>
                     <th>Öğrenci Soyadı</th>
                     <th>Kurs Adı</th>
@@ -53,6 +54,7 @@
                     @foreach ($sertifikalar as $sertifika)
                   <tr>
                     <td>{{$sertifika->id}}</td>
+                    <td>{{$sertifika->sertifikaNo}}</td>
                     <td>{{$sertifika->ogrenciAdi}}</td>
                     <td>{{$sertifika->ogrenciSoyadi}}</td>
                     <td>{{$sertifika->kursAdi}}</td>
@@ -60,6 +62,7 @@
                     <td>
                         <a href="{{route('admin.sertifikalar.destroy', ['id'=>$sertifika->id])}}" class="btn btn-danger">Sil</a>
                         <a href="{{route('admin.sertifikalar.edit', ['id'=>$sertifika->id])}}" class="btn btn-primary">Düzenle</a>
+                        <a href="{{asset('uploads/sertifikalar/'.Auth::user()->userInstitution.'/'.$sertifika->kursId.'/'.$sertifika->id. '/belge.pdf')}}" target="_blank" class="btn btn-primary">Sertifika Görüntüle</a>
                         
                         
                     </td>
@@ -101,10 +104,10 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
+
 <!-- Page specific script -->
 <script>
+  new DataTable('#sertifika_table');
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,

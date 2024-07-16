@@ -101,6 +101,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::post('/ogrenciler/add', [App\Http\Controllers\Admin\OgrencilerController::class, 'store'])->name('admin.ogrenciler.store');
     Route::post('/ogrenciler/edit/{id}', [App\Http\Controllers\Admin\OgrencilerController::class, 'update'])->name('admin.ogrenciler.update');
 
+    Route::post('/ogrenciler/import', [App\Http\Controllers\Admin\OgrencilerController::class, 'import'])->name('admin.ogrenciler.import');
+
     /* sertifikalar */
     Route::get('/sertifikalar', [App\Http\Controllers\Admin\SertifikalarController::class, 'index'])->name('admin.sertifikalar.index');
     Route::get('/sertifikalar/add', [App\Http\Controllers\Admin\SertifikalarController::class, 'create'])->name('admin.sertifikalar.create');
@@ -112,6 +114,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
 
     Route::get('/sertifikalar/ogrenci/ekle/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'ogrenciEkle'])->name('admin.sertifikalar.ogrenci.ekle');
     Route::get('/sertifikalar/ogrenci/liste/{id}', [App\Http\Controllers\Admin\SertifikalarController::class, 'ogrenciListe'])->name('admin.sertifikalar.ogrenci.liste');
+
+    Route::post('/sertifikalar/import', [App\Http\Controllers\Admin\SertifikalarController::class, 'import'])->name('admin.sertifikalar.import');
     
 });
 

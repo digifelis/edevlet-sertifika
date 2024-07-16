@@ -62,7 +62,12 @@
                     </div>
                   </div>
 
-
+                  <div class="form-group row">
+                    <label for="lisansSayisi" class="col-sm-2 col-form-label">sifre</label>
+                    <div class="col-sm-10">
+                      <input name="lisansSayisi" type="number" class="form-control" id="lisansSayisi" >
+                    </div>
+                  </div>
 
                 </div>
                 <!-- /.card-body -->

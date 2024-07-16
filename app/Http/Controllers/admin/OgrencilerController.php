@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Superadmin\OgrencilerModal;
+use App\Models\superadmin\OgrencilerModal;
 
 use Illuminate\Support\Facades\Auth;
+
+
+use App\Imports\OgrencilerImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 use Exception;
 
 class OgrencilerController extends Controller
@@ -43,6 +49,19 @@ class OgrencilerController extends Controller
     public function store(Request $request)
     {
         //
+        /* validation */
+        $request->validate([
+            'ogrenciAdi' => 'required',
+            'ogrenciSoyadi' => 'required',
+            'tcKimlikNo' => 'required',
+        ]);
+        /* validation */
+        /* check if Ogrenci tckimlikNo exists redirect to admin.ogrenciler.index */
+        $ogrenci = OgrencilerModal::where('tcKimlikNo', $request->tcKimlikNo)->where('kurumId', Auth::user()->userInstitution)->first();
+        if($ogrenci != null)
+            return redirect()->route('admin.ogrenciler.index')->with('message', 'Öğrenci zaten kayıtlı.');
+        /* check if Ogrenci tckimlikNo exists redirect to admin.ogrenciler.index */
+
         $ogrenci = new OgrencilerModal();
         $ogrenci->ogrenciAdi = $request->ogrenciAdi;
         $ogrenci->ogrenciSoyadi = $request->ogrenciSoyadi;
@@ -97,6 +116,15 @@ class OgrencilerController extends Controller
     public function update(Request $request, int $id)
     {
         //
+        /* validation */
+        $request->validate([
+            'ogrenciAdi' => 'required',
+            'ogrenciSoyadi' => 'required',
+            'tcKimlikNo' => 'required',
+        ]);
+        /* validation */
+
+
         try{
             $ogrenci = OgrencilerModal::find($id);
             if($ogrenci == null)
@@ -132,4 +160,31 @@ class OgrencilerController extends Controller
         }
 
     }
+
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls', // Validate file format if needed
+        ]);
+
+        $file = $request->file('file');
+
+        // Import users from the Excel file
+        $import = new OgrencilerImport();
+        $gelen = Excel::import($import , $file);
+        $rowCount = $import->getRowCount();
+        $totalCount = $import->getTotalRowCount();
+        $eklenemeyenler = $import->getEklenemeyenler();
+        $eklenemeyenString = '';
+        foreach($eklenemeyenler as $eklenemeyen) {
+            $eklenemeyenString = $eklenemeyen.', ';
+        }
+        if($eklenemeyenString != '')
+        $eklenemeyenString = $eklenemeyenString.' TC Kimlik Numaralı öğrenciler aktarılamadı.' ;
+
+        return redirect()->route('admin.ogrenciler.index')->with('message', 'Öğrenciler Excel Dosyasından Başarılı Bir Şekilde Alındı. Toplam '.$totalCount.' kaydın '.$rowCount.' adedi aktarıldı.'.$eklenemeyenString );
+    }
+
+    
 }

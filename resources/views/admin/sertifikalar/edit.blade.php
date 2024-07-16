@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Sertifika Listesi</h1>
+            <h1>Sertifika Düzenleme</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Sertifika Listesi</li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+              <li class="breadcrumb-item active">Sertifika Düzenleme</li>
             </ol>
           </div>
         </div>
@@ -38,7 +38,7 @@
                       <!-- select -->
                       <div class="form-group">
                         <label>Öğrenci Adı</label>
-                        <select class="custom-select rounded-0" id="exampleSelectRounded0" name="ogrenciBilgisi">
+                        <select class="custom-select rounded-0" id="exampleSelectRounded0" name="ogrenciBilgisi" required>
                             <option value="none">seçiniz</option>
                             @foreach ($ogrenciler as $ogrenci)
                             <option value="{{$ogrenci->id}}" 
@@ -52,7 +52,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Kurs Adı</label>
-                        <select class="custom-select rounded-0" id="exampleSelectRounded0" name="kursBilgisi">
+                        <select class="custom-select rounded-0" id="exampleSelectRounded0" name="kursBilgisi" required>
                             <option value="none">seçiniz</option>
                             @foreach ($kurslar as $kurs)
                             <option value="{{$kurs->id}}" 

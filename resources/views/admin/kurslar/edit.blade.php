@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Kurs Listesi</li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+              <li class="breadcrumb-item active">Kurs Düzenle</li>
             </ol>
           </div>
         </div>
@@ -40,7 +40,7 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Kurs Adı</label>
                     <div class="col-sm-10">
-                      <input name="kursAdi" type="text" class="form-control" id="inputEmail3" value="{{$kurslar->kursAdi}}" >
+                      <input name="kursAdi" type="text" class="form-control" id="inputEmail3" value="{{$kurslar->kursAdi}}" required>
                     </div>
                   </div>
 
@@ -49,7 +49,7 @@
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Sertifika Adı</label>
                     <div class="col-sm-10">
-                      <input name="sertifikaAdi" type="text" class="form-control" id="input1" value="{{$kurslar->sertifikaAdi}}" >
+                      <input name="sertifikaAdi" type="text" class="form-control" id="input1" value="{{$kurslar->sertifikaAdi}}" required>
                     </div>
                   </div>
 
@@ -58,7 +58,7 @@
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Başlık</label>
                     <div class="col-sm-10">
-                      <input name="baslik" type="text" class="form-control" id="input1" value="{{$kurslar->baslik}}" >
+                      <input name="baslik" type="text" class="form-control" id="input2" value="{{$kurslar->baslik}}" required>
                     </div>
                   </div>
 
@@ -72,7 +72,7 @@
                           <label for="inputPassword3" class="col-sm-2 col-form-label">Şablon dosyası</label>
                           <a href="{{ URL::to('/uploads/templates/')}}/{{$kurslar->kursKurumId}}/{{$kurslar->sablonDosyasi}}" target="_blank">Dosyayı görüntüle</a> <br> <br>
                           <div class="col-sm-10">
-                              <input name="sablonDosyasi" type="file" class="form-control" id="input1" value="{{$kurslar->sablonDosyasi}}" >
+                              <input name="sablonDosyasi" type="file" class="form-control" id="input3" value="{{$kurslar->sablonDosyasi}}" >
                           </div>
 
                         </div>
@@ -83,10 +83,10 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Sertifika Türü</label>
-                            <select class="form-control" name="tur">
+                            <select class="form-control" name="tur" required>
                                 <option value="none">seçiniz</option>
-                                <option value="katılım belgesi" {{$kurslar->tur == 'katılım belgesi'? 'selected':''}} >katılım belgesi</option>
-                                <option value="kurs belgesi" {{$kurslar->tur == 'kurs belgesi'? 'selected':''}} >kurs belgesi</option>
+                                <option value="Katılım Belgesi" {{$kurslar->tur == 'Katılım Belgesi'? 'selected':''}} >Katılım Belgesi</option>
+                                <option value="Kurs Belgesi" {{$kurslar->tur == 'Kurs Belgesi'? 'selected':''}} >Kurs Belgesi</option>
                             </select>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Açıklama</label>
                     <div class="col-sm-10">
-                        <input name="aciklama" type="text" class="form-control" id="input1" value="{{$kurslar->aciklama}}" >
+                        <input name="aciklama" type="text" class="form-control" id="input4" value="{{$kurslar->aciklama}}" required>
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Sertifika Geçerlilik Tarihi</label>
                             <div class="col-sm-10">
                                 <input name="sertifikaGecerlilikTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi"
-                                value="{{$kurslar->sertifikaGecerlilikTarihi}}" >
+                                value="{{$kurslar->sertifikaGecerlilikTarihi}}" required>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Kurs Başlangıç Tarihi</label>
                             <div class="col-sm-10">
                                 <input name="baslangicTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi"
-                                value="{{$kurslar->baslangicTarihi}}" >
+                                value="{{$kurslar->baslangicTarihi}}" required>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Kurs bitiş Tarihi</label>
                             <div class="col-sm-10">
                                 <input name="bitisTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" 
-                                value="{{$kurslar->bitisTarihi}}">
+                                value="{{$kurslar->bitisTarihi}}" required>
                             </div>
                         </div>
                     </div>

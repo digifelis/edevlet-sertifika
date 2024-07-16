@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Superadmin\KursModal;
+use App\Models\superadmin\KursModal;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +43,21 @@ class KurslarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        /* validation */
+        $request->validate([
+            'kursAdi' => 'required',
+            'aciklama' => 'required',
+            'baslangicTarihi' => 'required',
+            'bitisTarihi' => 'required',
+            'sertifikaAdi' => 'required',
+            'baslik' => 'required',
+            'tur' => 'required',
+            'sertifikaGecerlilikTarihi' => 'required',
+            'sablonDosyasi' => 'required',
+        ]);
+        /* validation */
+
         $kurs = new KursModal();
         $kurs->kursAdi = $request->kursAdi;
         $kurs->kursKurumId = Auth::user()->userInstitution;
@@ -72,7 +86,7 @@ class KurslarController extends Controller
         }
 
         $fileName = time().'_'.Str::slug($fileName).".docx";
-        $request->file('sablonDosyasi')->move(public_path('uploads/templates/'.$request->kursKurumId), $fileName);
+        $request->file('sablonDosyasi')->move(public_path('uploads/templates/'.$kurs->kursKurumId), $fileName);
         $kurs->sablonDosyasi = $fileName;
         /* file upload */
 
@@ -127,6 +141,21 @@ class KurslarController extends Controller
     public function update(Request $request, int $id)
     {
         //
+        /* validation */
+        $request->validate([
+            'kursAdi' => 'required',
+            'aciklama' => 'required',
+            'baslangicTarihi' => 'required',
+            'bitisTarihi' => 'required',
+            'sertifikaAdi' => 'required',
+            'baslik' => 'required',
+            'dilKey' => 'required',
+            'tur' => 'required',
+            'sertifikaGecerlilikTarihi' => 'required',
+        ]);
+        /* validation */
+
+        
         $kurs = KursModal::where('id',  $id)->where('kursKurumId',  Auth::user()->userInstitution)->first();
         if($kurs == null)
             throw new Exception("Yetkisiz erişim");
@@ -156,7 +185,7 @@ class KurslarController extends Controller
             }
 
             $fileName = time().'_'.Str::slug($fileName).".docx";
-            $request->file('sablonDosyasi')->move(public_path('uploads/templates/'.$request->kursKurumId), $fileName);
+            $request->file('sablonDosyasi')->move(public_path('uploads/templates/'.$kurs->kursKurumId), $fileName);
             $kurs->sablonDosyasi = $fileName;
         }
         /* file upload */

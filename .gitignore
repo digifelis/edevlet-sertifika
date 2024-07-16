@@ -14,3 +14,7 @@ yarn-error.log
 /.idea
 /.vscode
 belgedogrulama
+public/uploads/sertifikalar
+public/uploads/templates
+public/uploads/*.jpg
+public/uploads/*.svg

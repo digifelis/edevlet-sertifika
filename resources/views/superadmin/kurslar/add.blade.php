@@ -86,8 +86,8 @@
                             <label>Sertifika Türü</label>
                             <select class="form-control" name="tur">
                                 <option value="none">seçiniz</option>
-                                <option value="katılım belgesi" >katılım belgesi</option>
-                                <option value="kurs belgesi" >kurs belgesi</option>
+                                <option value="Katılım Belgesi" >Katılım Belgesi</option>
+                                <option value="Kurs Belgesi" >Kurs Belgesi</option>
                             </select>
                         </div>
                     </div>

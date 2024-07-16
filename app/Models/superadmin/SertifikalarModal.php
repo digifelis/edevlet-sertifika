@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class SertifikalarModal extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'ogrenciId', 
+        'kursId',
+        'kurumId',
+        'sertifikaNo',
+        // Add other fillable attributes if necessary
+    ];
   /*
     public function kurum()
     {

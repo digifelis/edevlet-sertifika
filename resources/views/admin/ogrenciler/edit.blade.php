@@ -10,8 +10,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Öğrenci Bilgileri</li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+              <li class="breadcrumb-item active">Öğrenci Düzenle</li>
             </ol>
           </div>
         </div>
@@ -36,20 +36,20 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Öğrenci Adı</label>
                     <div class="col-sm-10">
-                      <input name="ogrenciAdi" type="text" class="form-control" id="inputEmail3" value="{{$ogrenci->ogrenciAdi}}">
+                      <input name="ogrenciAdi" type="text" class="form-control" id="inputEmail3" value="{{$ogrenci->ogrenciAdi}}" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Öğrenci Soyadı</label>
                     <div class="col-sm-10">
-                      <input name="ogrenciSoyadi" type="text" class="form-control" id="inputPassword3" placeholder="Öğrenci Soyadı" value="{{$ogrenci->ogrenciSoyadi}}">
+                      <input name="ogrenciSoyadi" type="text" class="form-control" id="inputPassword3" placeholder="Öğrenci Soyadı" value="{{$ogrenci->ogrenciSoyadi}}" required>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Öğrenci TC Kimlik No</label>
                     <div class="col-sm-10">
-                      <input name="tcKimlikNo" type="text" class="form-control" id="inputPassword3" placeholder="Öğrenci Tc Kimlik No" value="{{$ogrenci->tcKimlikNo}}">
+                      <input name="tcKimlikNo" type="text" class="form-control" id="inputPassword3" placeholder="Öğrenci Tc Kimlik No" value="{{$ogrenci->tcKimlikNo}}" required>
                     </div>
                   </div>
 

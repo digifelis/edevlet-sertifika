@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+
+services:
+  - docker:dind
+variables:
+  DOCKER_IMAGE: reber56/sertifika
+
+
+docker_build:
+  stage: build
+  image: docker:latest
+  before_script:
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_HUB_TOKEN
+  script:
+#    - docker build -t $DOCKER_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker build -t $DOCKER_IMAGE .
+    - docker push $DOCKER_IMAGE:latest
+#    - docker push $DOCKER_IMAGE:$CI_COMMIT_SHORT_SHA
+    - echo "Compile complete for reber56/sertifika."
+
+#deploy:
+#  stage: deploy
+#  before_script:
+#    - chmod 400 $SSH_KEY
+#  script:
+#    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@194.27.146.106 "
+#      docker stop sertifika && 
+#      docker rm -f sertifika && 
+#      docker login -u $DOCKER_USERNAME -p $DOCKER_HUB_TOKEN && 
+#      docker run -d --name sertifika -p 8000:80 -v /home/linux/sertifikavolume:/var/www/html/public/uploads $DOCKER_IMAGE:$CI_COMMIT_SHORT_SHA
+#      "

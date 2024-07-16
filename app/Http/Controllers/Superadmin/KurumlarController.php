@@ -44,6 +44,7 @@ class KurumlarController extends Controller
         $kurum->kurumKodu = $request->kurumKodu;
         $kurum->kullaniciAdi = $request->kullaniciAdi;
         $kurum->sifre = $request->sifre;
+        $kurum->lisansSayisi = $request->lisansSayisi;
         $kurum->save();
         return redirect()->route('superadmin.kurumlar.index');
     }
@@ -89,6 +90,7 @@ class KurumlarController extends Controller
         $kurum->kurumKodu = $request->kurumKodu;
         $kurum->kullaniciAdi = $request->kullaniciAdi;
         $kurum->sifre = $request->sifre;
+        $kurum->lisansSayisi = $request->lisansSayisi;
         $kurum->save();
         return redirect()->route('superadmin.kurumlar.index');
     }

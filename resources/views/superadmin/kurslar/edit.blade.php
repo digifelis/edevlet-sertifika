@@ -85,8 +85,8 @@
                             <label>Sertifika Türü</label>
                             <select class="form-control" name="tur">
                                 <option value="none">seçiniz</option>
-                                <option value="katılım belgesi" {{$kurslar->tur == 'katılım belgesi'? 'selected':''}} >katılım belgesi</option>
-                                <option value="kurs belgesi" {{$kurslar->tur == 'kurs belgesi'? 'selected':''}} >kurs belgesi</option>
+                                <option value="Katılım Belgesi" {{$kurslar->tur == 'Katılım Belgesi'? 'selected':''}} >Katılım Belgesi</option>
+                                <option value="Kurs Belgesi" {{$kurslar->tur == 'Kurs Belgesi'? 'selected':''}} >Kurs Belgesi</option>
                             </select>
                         </div>
                     </div>

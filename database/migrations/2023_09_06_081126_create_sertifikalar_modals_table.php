@@ -18,6 +18,7 @@ class CreateSertifikalarModalsTable extends Migration
             $table->unsignedBigInteger('ogrenciId');
             $table->unsignedBigInteger('kursId');
             $table->unsignedBigInteger('kurumId');
+            $table->string('sertifikaNo')->nullable();
             $table->timestamps();
         });
     }

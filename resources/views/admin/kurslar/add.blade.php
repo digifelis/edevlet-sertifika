@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Kurs Listesi</li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+              <li class="breadcrumb-item active">Kurs Ekle</li>
             </ol>
           </div>
         </div>
@@ -42,7 +42,7 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Kurs Adı</label>
                     <div class="col-sm-10">
-                      <input name="kursAdi" type="text" class="form-control" id="inputEmail3" >
+                      <input name="kursAdi" type="text" class="form-control" id="inputEmail3" required>
                     </div>
                   </div>
 
@@ -51,7 +51,7 @@
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Sertifika Adı</label>
                     <div class="col-sm-10">
-                      <input name="sertifikaAdi" type="text" class="form-control" id="input1" >
+                      <input name="sertifikaAdi" type="text" class="form-control" id="input1" required>
                     </div>
                   </div>
 
@@ -60,7 +60,7 @@
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Başlık</label>
                     <div class="col-sm-10">
-                      <input name="baslik" type="text" class="form-control" id="input1" >
+                      <input name="baslik" type="text" class="form-control" id="input2" required>
                     </div>
                   </div>
 
@@ -72,7 +72,7 @@
                         <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 col-form-label">Şablon dosyası</label>
                         <div class="col-sm-10">
-                            <input name="sablonDosyasi" type="file" class="form-control" id="input1" >
+                            <input name="sablonDosyasi" type="file" class="form-control" id="input3" required>
                         </div>
                         </div>
                     </div>
@@ -81,10 +81,10 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Sertifika Türü</label>
-                            <select class="form-control" name="tur">
+                            <select class="form-control" name="tur" required>
                                 <option value="none">seçiniz</option>
-                                <option value="katılım belgesi" >katılım belgesi</option>
-                                <option value="kurs belgesi" >kurs belgesi</option>
+                                <option value="Katılım Belgesi" >Katılım Belgesi</option>
+                                <option value="Kurs Belgesi" >Kurs Belgesi</option>
                             </select>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Açıklama</label>
                     <div class="col-sm-10">
-                        <input name="aciklama" type="text" class="form-control" id="input1" >
+                        <input name="aciklama" type="text" class="form-control" id="input3" required>
                     </div>
                 </div>
 
@@ -105,7 +105,7 @@
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Sertifika Geçerlilik Tarihi</label>
                             <div class="col-sm-10">
-                                <input name="sertifikaGecerlilikTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" >
+                                <input name="sertifikaGecerlilikTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" required>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Kurs Başlangıç Tarihi</label>
                             <div class="col-sm-10">
-                                <input name="baslangicTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" >
+                                <input name="baslangicTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" required>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Kurs bitiş Tarihi</label>
                             <div class="col-sm-10">
-                                <input name="bitisTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" >
+                                <input name="bitisTarihi" type="text" class="form-control sertifikaGecerlilikTarihi" id="sertifikaGecerlilikTarihi" required>
                             </div>
                         </div>
                     </div>

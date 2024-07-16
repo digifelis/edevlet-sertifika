@@ -19,6 +19,7 @@ class CreateKurumModalsTable extends Migration
             $table->string("kurumKodu");
             $table->string("kullaniciAdi");
             $table->string("sifre");
+            $table->unsignedBigInteger("lisansSayisi");
             $table->timestamps();
         });
     }

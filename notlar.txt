@@ -1,0 +1,4 @@
+convert svg to png
+
+docker pull pluswerk/convert-svg-to-png
+docker run -d -p 8999:3000 --name svgtopng pluswerk/convert-svg-to-png

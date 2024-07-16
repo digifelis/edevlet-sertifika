@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('js/dselect.js')}}"></script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -10,8 +13,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Sertifika Listesi</li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+              <li class="breadcrumb-item active">Sertifika Ekle</li>
             </ol>
           </div>
         </div>
@@ -26,6 +29,16 @@
                 <h3 class="card-title">Sertifika Bilgileri</h3>
               </div>
               <!-- /.card-header -->
+
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"><a href="{{asset('uploads/sertifikalar.xlsx')}}">Örnek Dosya İndir</a></label>
+              <form class="form-horizontal" action="{{ route('admin.sertifikalar.import') }}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <input class="form-control" type="file" name="file" accept=".xlsx, .xls">
+                  <br>
+                  <button type="submit" class="btn btn-info">Excel ile Aktar</button>
+              </form>
+
               <!-- form start -->
               <form class="form-horizontal" action="{{route('admin.sertifikalar.store')}}" method="post">
                 @csrf
@@ -37,7 +50,7 @@
                       <!-- select -->
                       <div class="form-group">
                         <label>Öğrenci Adı</label>
-                        <select class="custom-select rounded-0" id="exampleSelectRounded0" name="ogrenciBilgisi">
+                        <select class="form-select" id="select_box" name="ogrenciBilgisi" required>
                             <option value="none">seçiniz</option>
                             @foreach ($ogrenciler as $ogrenci)
                             <option value="{{$ogrenci->id}}" >{{$ogrenci->ogrenciAdi}} {{$ogrenci->ogrenciSoyadi}}</option>
@@ -49,7 +62,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Kurs Adı</label>
-                        <select class="custom-select rounded-0" id="exampleSelectRounded0" name="kursBilgisi">
+                        <select class="form-select" id="select_box1" name="kursBilgisi" required>
                             @if($action == Null)
                               <option value="none">seçiniz {{$action}}</option>
                             @endif
@@ -84,4 +97,19 @@
 
 
 </div>
+
+<script>
+
+    var select_box_element = document.querySelector('#select_box');
+
+    dselect(select_box_element, {
+        search: true
+    });
+    var select_box_element = document.querySelector('#select_box1');
+
+    dselect(select_box_element, {
+        search: true
+    });
+</script>
+
 @endsection

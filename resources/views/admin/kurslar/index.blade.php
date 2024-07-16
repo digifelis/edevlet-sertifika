@@ -5,6 +5,13 @@
   <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+
+
+
+  
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,7 +23,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
               <li class="breadcrumb-item active">Kurs Listesi</li>
             </ol>
           </div>
@@ -31,16 +38,17 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tüm Kurs listesi</h3>
+                <h3 class="card-title">Kurs listesi</h3>
                     @if(Session::has('message'))
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="kurs_table" class="table table-bordered table-hover display">
                   <thead>
                   <tr>
+                  <th>Kurs id</th>
                     <th>Kurs Adı</th>
                     <th>Sertifika Adı</th>
                     <th>Başlık</th>
@@ -52,6 +60,7 @@
                   <tbody>
                     @foreach ($kurslar as $kurs)
                   <tr>
+                  <td>{{$kurs->id}}</td>
                     <td>{{$kurs->kursAdi}}</td>
                     <td>{{$kurs->sertifikaAdi}}
                     </td>
@@ -102,10 +111,13 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
+
 <!-- Page specific script -->
+
+
 <script>
+  new DataTable('#kurs_table');
+
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,

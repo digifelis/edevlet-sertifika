@@ -42,7 +42,14 @@ class DatabaseSeeder extends Seeder
             'userStatus' => 'active'
         ]);
 
-
+        /* create kurum from kurumModal */
+        \App\Models\superadmin\KurumModal::factory(10)->create();
+        /* create kurs from kursModal */
+        \App\Models\superadmin\KursModal::factory(10)->create();
+        /* creeate ogrenciler from ogrencilerModal */
+        \App\Models\superadmin\OgrencilerModal::factory(100)->create();
+        /* create sertifikalar from sertifikalarModal */
+        \App\Models\superadmin\SertifikalarModal::factory(100)->create();
 
 
 
