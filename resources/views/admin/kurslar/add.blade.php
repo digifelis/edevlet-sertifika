@@ -42,10 +42,16 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Kurs Adı</label>
                     <div class="col-sm-10">
-                      <input name="kursAdi" type="text" class="form-control" id="inputEmail3" required>
+                      <input name="kursAdi" type="text" class="form-control" id="kursAdi" required>
                     </div>
                   </div>
 
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Kurs Adı (İngilizce)</label>
+                    <div class="col-sm-10">
+                      <input name="kursAdiIng" type="text" class="form-control" id="kursAdiIng" required>
+                    </div>
+                  </div>
 
 
                   <div class="form-group row">

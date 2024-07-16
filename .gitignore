@@ -15,6 +15,5 @@ yarn-error.log
 /.vscode
 belgedogrulama
 public/uploads/sertifikalar
-public/uploads/templates
 public/uploads/*.jpg
 public/uploads/*.svg

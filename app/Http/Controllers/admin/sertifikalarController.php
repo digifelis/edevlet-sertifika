@@ -125,8 +125,12 @@ class SertifikalarController extends Controller
         /* complete lastinsertid to 4 digit */
         /* get lenght of $lastInsertId */
         
-        $completedSertifikaNo = str_pad($lastInsertId, 12, '0', STR_PAD_LEFT);
-        
+        $completedSertifikaNoTemp = str_pad($lastInsertId, 5, '0', STR_PAD_LEFT);
+        $year = substr(date('Y'), -3);
+        $dosyalamaKodu = 199;
+        $birimId = 1;
+        $completedSertifikaNo = $year.$dosyalamaKodu.$birimId.$completedSertifikaNoTemp;
+
         if($input_params->tur == "Kurs Belgesi"){
             $sertifikaNo = 'UN_'.'04'.$input_params->kurumKodu.$completedSertifikaNo;
         }
@@ -143,6 +147,7 @@ class SertifikalarController extends Controller
         $templateProcessor->setValue('ogrencıadı', $input_params->ogrenciAdi);
         $templateProcessor->setValue('ogrencısoyadı', $input_params->ogrenciSoyadi);
         $templateProcessor->setValue('kursAdi', $input_params->kursAdi);
+        $templateProcessor->setValue('kursAdiIng', $input_params->kursAdiIng);
         $templateProcessor->setValue('sertifikaNo', $sertifikaNo);
         $templateProcessor->setValue('tcKimlikNo', $input_params->tcKimlikNo);
         $templateProcessor->setValue('sertifikaAdi', $input_params->sertifikaAdi);
@@ -157,11 +162,11 @@ class SertifikalarController extends Controller
 
         /* create qrcode */
         $baseData = $input_params->kurumId.'_'.$input_params->kursId.'_'.$lastInsertId;
-	$QrCodeText = 'barkodlubelgedogrulama://barkod: '.$sertifikaNo.';tckn:'.$input_params->tcKimlikNo;
+	    $QrCodeText = 'barkodlubelgedogrulama://barkod: '.$sertifikaNo.';tckn:'.$input_params->tcKimlikNo;
         $qrImage = $this->createQrcode($QrCodeText, $baseData);
-	sleep(1);
+	    sleep(1);
         $templateProcessor->setImageValue('foto', array('path' => $qrImage[0], 'width' => 100, 'height' => 100, 'ratio' => true));
-	sleep(1);
+	    sleep(1);
         /* delete image files */
         unlink($qrImage[0]);
         unlink($qrImage[1]);
@@ -174,7 +179,7 @@ class SertifikalarController extends Controller
 
         /* save template as docx file */
         $templateProcessor->saveAs($wordOutputPath. '/belge.docx');
-	sleep(1);
+	    sleep(1);
         /* convert docx to PDF */
         (new SertifikalarController())->convertToPDF($wordOutputPath. '/belge.docx' , $wordOutputPath. '/belge.pdf');
         
@@ -282,9 +287,8 @@ class SertifikalarController extends Controller
             return redirect()->route('admin.sertifikalar.index')->with('message', 'Öğrenci bilgisi bulunamadı.')->with('message-type', 'error');
         }
         $sertifikalar->ogrenciId = $request->ogrenciBilgisi;
-        
-        
         $sertifikalar->save();
+
         $belgeOlustur = new SertifikalarController();
         $sertifikalar->sertifikaDosyasi = $belgeOlustur->belgeOlustur($sertifikalar->id, Auth::user()->userInstitution, $request->kursBilgisi, $request->ogrenciBilgisi);
 

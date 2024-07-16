@@ -60,6 +60,7 @@ class KurslarController extends Controller
 
         $kurs = new KursModal();
         $kurs->kursAdi = $request->kursAdi;
+        $kurs->kursAdiIng = $request->kursAdiIng;
         $kurs->kursKurumId = Auth::user()->userInstitution;
         $kurs->aciklama = $request->aciklama;
         $kurs->baslangicTarihi = $request->baslangicTarihi;
@@ -160,6 +161,7 @@ class KurslarController extends Controller
         if($kurs == null)
             throw new Exception("Yetkisiz erişim");
         $kurs->kursAdi = $request->kursAdi;
+        $kurs->kursAdiIng = $request->kursAdiIng;
         $kurs->kursKurumId = Auth::user()->userInstitution;
         $kurs->aciklama = $request->aciklama;
         $kurs->baslangicTarihi = $request->baslangicTarihi;
