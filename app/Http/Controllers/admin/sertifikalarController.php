@@ -140,8 +140,6 @@ class SertifikalarController extends Controller
         $sertifikalar = SertifikalarModal::where('id', $lastInsertId)->where('kurumId', $userInstitution)->first();
         $sertifikalar->sertifikaNo = $sertifikaNo;
         $sertifikalar->save();
-
-
         /* set values to template */
         $templateProcessor->setValue('kurumadI', $input_params->kurumAdi);
         $templateProcessor->setValue('ogrencıadı', $input_params->ogrenciAdi);
