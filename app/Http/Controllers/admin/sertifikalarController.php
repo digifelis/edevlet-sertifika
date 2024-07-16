@@ -140,7 +140,7 @@ class SertifikalarController extends Controller
         $sertifikalar = SertifikalarModal::where('id', $lastInsertId)->where('kurumId', $userInstitution)->first();
         $sertifikalar->sertifikaNo = $sertifikaNo;
         $sertifikalar->save();
-        
+
         /* set values to template */
         $templateProcessor->setValue('kurumadI', $input_params->kurumAdi);
         $templateProcessor->setValue('ogrencıadı', $input_params->ogrenciAdi);
@@ -159,8 +159,6 @@ class SertifikalarController extends Controller
         $templateProcessor->setValue('sertifikaGecerlilikTarihi', $sertifikaGecerlilikTarihi);
         $templateProcessor->setValue('sertifikaTuru', $input_params->tur);
         $templateProcessor->setValue('sertifikaDili', $input_params->dilKey);
-
-
         /* create qrcode */
         $baseData = $input_params->kurumId.'_'.$input_params->kursId.'_'.$lastInsertId;
 	    $QrCodeText = 'barkodlubelgedogrulama://barkod: '.$sertifikaNo.';tckn:'.$input_params->tcKimlikNo;
