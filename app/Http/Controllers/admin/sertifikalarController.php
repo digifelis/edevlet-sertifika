@@ -155,7 +155,9 @@ class SertifikalarController extends Controller
         $templateProcessor->setValue('aciklama', $input_params->aciklama);
         $templateProcessor->setValue('baslangicTarihi', $input_params->baslangicTarihi);
         $templateProcessor->setValue('bitisTarihi', $input_params->bitisTarihi);
-        $templateProcessor->setValue('sertifikaGecerlilikTarihi', $input_params->sertifikaGecerlilikTarihi);
+
+        $sertifikaGecerlilikTarihi = date('d.m.Y', strtotime($input_params->sertifikaGecerlilikTarihi));
+        $templateProcessor->setValue('sertifikaGecerlilikTarihi', $sertifikaGecerlilikTarihi);
         $templateProcessor->setValue('sertifikaTuru', $input_params->tur);
         $templateProcessor->setValue('sertifikaDili', $input_params->dilKey);
 
