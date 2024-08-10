@@ -111,6 +111,9 @@ function RabbitMQdanBelgeOlustur($input_params, $basePath){
     $templateProcessor->setValue('ogrencıadı', $input_params["ogrenciAdi"]);
     $templateProcessor->setValue('ogrencısoyadı', $input_params["ogrenciSoyadi"]);
     $templateProcessor->setValue('kursAdi', $input_params["kursAdi"]);
+
+    $templateProcessor->setValue('kursAdiIng', $input_params['kursAdiIng']);
+
     $templateProcessor->setValue('sertifikaNo', $sertifikaNo);
     $templateProcessor->setValue('tcKimlikNo', $input_params["tcKimlikNo"]);
     $templateProcessor->setValue('sertifikaAdi', $input_params["sertifikaAdi"]);
@@ -118,21 +121,25 @@ function RabbitMQdanBelgeOlustur($input_params, $basePath){
     $templateProcessor->setValue('aciklama', $input_params["aciklama"]);
     $templateProcessor->setValue('baslangicTarihi', $input_params["baslangicTarihi"]);
     $templateProcessor->setValue('bitisTarihi', $input_params["bitisTarihi"]);
-    $templateProcessor->setValue('sertifikaGecerlilikTarihi', $input_params["sertifikaGecerlilikTarihi"]);
+
+    $sertifikaGecerlilikTarihi = date('d.m.Y', strtotime($input_params['sertifikaGecerlilikTarihi']));
+    $templateProcessor->setValue('sertifikaGecerlilikTarihi', $sertifikaGecerlilikTarihi);
+
     $templateProcessor->setValue('sertifikaTuru', $input_params["tur"]);
     $templateProcessor->setValue('sertifikaDili', $input_params["dilKey"]);
+
 
     $baseData = $input_params["kurumId"].'_'.$input_params["kursId"].'_'.$input_params["lastInsertId"];
 
     $file = $basePath.'/uploads/'.$baseData.'_qrcode.svg';
     $QrCodeText = 'barkodlubelgedogrulama://barkod: '.$sertifikaNo.';tckn:'.$input_params["tcKimlikNo"];
     QrCode::format('svg')->generate($QrCodeText, $file);
-
+    
     convertSvgToJpg($file, $basePath.'/uploads/'.$baseData.'_qrcode.jpg');
+    sleep(1);
     $qrImage = [$basePath.'/uploads/'.$baseData.'_qrcode.jpg', $file];
-
     $templateProcessor->setImageValue('foto', array('path' => $qrImage[0], 'width' => 100, 'height' => 100, 'ratio' => true));
-
+    sleep(1);
     unlink($qrImage[0]);
     unlink($qrImage[1]);
 
