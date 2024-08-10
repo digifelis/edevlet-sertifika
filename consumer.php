@@ -89,13 +89,20 @@ function RabbitMQdanBelgeOlustur($input_params, $basePath){
     $sablon = $basePath . '/uploads/templates/' . $input_params["kurumId"] . '/' . $input_params["sablonDosyasi"];
     $templateProcessor = new TemplateProcessor($sablon);
 
-    $completedSertifikaNo = str_pad($input_params["lastInsertId"], 12, '0', STR_PAD_LEFT);
+
+    $completedSertifikaNoTemp = str_pad($input_params["lastInsertId"], 5, '0', STR_PAD_LEFT);
+    $year = substr(date('Y'), -3);
+    $dosyalamaKodu = 199;
+    $birimId = 1;
+    $completedSertifikaNo = $year.$dosyalamaKodu.$birimId.$completedSertifikaNoTemp;
+
+ //   $completedSertifikaNo = str_pad($input_params["lastInsertId"], 12, '0', STR_PAD_LEFT);
     
     if($input_params["tur"] == "Kurs Belgesi"){
         $sertifikaNo = 'UN_'.'04'.$input_params["kurumKodu"].$completedSertifikaNo;
     }
     if($input_params["tur"] == "Katılım Belgesi"){
-        $sertifikaNo = 'UN_'.'03'.$input_params["kurumKodu"].$completedSertifikaNo;
+        $sertifikaNo = 'UN_'.'04'.$input_params["kurumKodu"].$completedSertifikaNo;
     }
 
     $templateProcessor->setValue('kurumadI', $input_params["kurumAdi"]);
@@ -144,7 +151,7 @@ function RabbitMQdanBelgeOlustur($input_params, $basePath){
 $host = '10.1.2.55';
 $port = '5672';
 $user = 'guest';
-$pass = 'mansur56@';
+$pass = 'guest';
 $queueName = 'olusturulacaksertifikalar';
 
 // Establish a connection to RabbitMQ server
