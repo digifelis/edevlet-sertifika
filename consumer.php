@@ -97,13 +97,15 @@ function RabbitMQdanBelgeOlustur($input_params, $basePath){
     $completedSertifikaNo = $year.$dosyalamaKodu.$birimId.$completedSertifikaNoTemp;
 
  //   $completedSertifikaNo = str_pad($input_params["lastInsertId"], 12, '0', STR_PAD_LEFT);
-    
+    $sertifikaNo = 'UN_'.'04'.$input_params["kurumKodu"].$completedSertifikaNo;
+    /*
     if($input_params["tur"] == "Kurs Belgesi"){
         $sertifikaNo = 'UN_'.'04'.$input_params["kurumKodu"].$completedSertifikaNo;
     }
     if($input_params["tur"] == "Katılım Belgesi"){
         $sertifikaNo = 'UN_'.'04'.$input_params["kurumKodu"].$completedSertifikaNo;
     }
+    */
 
     $templateProcessor->setValue('kurumadI', $input_params["kurumAdi"]);
     $templateProcessor->setValue('ogrencıadı', $input_params["ogrenciAdi"]);
